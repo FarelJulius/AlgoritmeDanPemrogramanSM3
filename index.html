@@ -1,127 +1,236 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tugas Algoritma dan Pemrograman</title>
+  <title>Farel Julius Khristian | Algoritma & Pemrograman</title>
 
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Arial, sans-serif;
     }
 
     body {
       min-height: 100vh;
-      background: linear-gradient(135deg, #e8eaf6, #f3e5f5);
-      color: #333;
-      padding: 40px 20px;
+      background:
+        radial-gradient(circle at top left, #e9e4ff, transparent 35%),
+        radial-gradient(circle at bottom right, #dce8ff, transparent 35%),
+        #f8f9fc;
+      color: #1f2937;
+      padding: 50px 20px;
     }
 
     .container {
-      max-width: 850px;
+      max-width: 900px;
       margin: auto;
     }
 
-    .header {
-      background: linear-gradient(135deg, #6a5acd, #8e7cc3);
+    /* HEADER */
+    .hero {
+      background: linear-gradient(135deg, #25215c, #5146a5);
       color: white;
-      padding: 35px;
-      border-radius: 20px;
+      padding: 55px 40px;
+      border-radius: 25px;
       text-align: center;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 20px 45px rgba(37, 33, 92, 0.25);
       margin-bottom: 25px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .header h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+      top: -80px;
+      right: -60px;
     }
 
-    .header p {
-      font-size: 15px;
-      opacity: 0.9;
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
+      bottom: -70px;
+      left: -40px;
     }
 
-    .profile {
-      background: white;
-      padding: 20px 25px;
-      border-radius: 15px;
-      margin-bottom: 25px;
-      box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+    .hero h1 {
+      font-size: 34px;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
     }
 
-    .profile p {
-      margin: 8px 0;
+    .hero p {
       font-size: 16px;
+      opacity: 0.85;
+      position: relative;
+      z-index: 1;
     }
 
-    .profile strong {
-      color: #6a5acd;
+    /* PROFILE */
+    .profile {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(10px);
+      border: 1px solid #e5e7eb;
+      border-radius: 20px;
+      padding: 25px 30px;
+      margin-bottom: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
     }
 
-    .tasks {
-      background: white;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
-    }
-
-    .tasks h2 {
-      color: #5b4bb7;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .task-list {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      list-style: none;
-    }
-
-    .task-list li a {
-      display: block;
-      text-decoration: none;
-      background: #f1efff;
-      color: #5b4bb7;
-      padding: 16px;
-      border-radius: 12px;
-      text-align: center;
+    .profile-title {
+      color: #5146a5;
+      font-size: 14px;
       font-weight: bold;
-      transition: 0.3s;
-      border: 2px solid transparent;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
     }
 
-    .task-list li a:hover {
-      background: #6a5acd;
-      color: white;
-      transform: translateY(-4px);
-      box-shadow: 0 7px 15px rgba(106, 90, 205, 0.3);
+    .profile-info {
+      display: flex;
+      gap: 45px;
+      flex-wrap: wrap;
     }
 
-    footer {
-      text-align: center;
-      margin-top: 25px;
-      color: #666;
+    .info-item span {
+      display: block;
+      color: #6b7280;
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .info-item strong {
+      font-size: 17px;
+      color: #25215c;
+    }
+
+    /* TASK */
+    .task-container {
+      background: rgba(255,255,255,0.9);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      border: 1px solid #e5e7eb;
+    }
+
+    .task-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .task-header h2 {
+      color: #25215c;
+      font-size: 23px;
+    }
+
+    .task-header span {
+      color: #6b7280;
       font-size: 14px;
     }
 
-    @media (max-width: 650px) {
+    .task-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .task-list a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #374151;
+      background: #f8f8ff;
+      border: 1px solid #e5e7eb;
+      padding: 17px;
+      border-radius: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .number {
+      width: 35px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ece9ff;
+      color: #5146a5;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    .task-list a:hover {
+      transform: translateY(-4px);
+      background: #5146a5;
+      color: white;
+      border-color: #5146a5;
+      box-shadow: 0 10px 20px rgba(81,70,165,0.2);
+    }
+
+    .task-list a:hover .number {
+      background: rgba(255,255,255,0.2);
+      color: white;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      margin-top: 25px;
+      color: #9ca3af;
+      font-size: 13px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 700px) {
+      body {
+        padding: 25px 15px;
+      }
+
+      .hero {
+        padding: 40px 20px;
+      }
+
+      .hero h1 {
+        font-size: 26px;
+      }
+
       .task-list {
         grid-template-columns: repeat(2, 1fr);
       }
-
-      .header h1 {
-        font-size: 25px;
-      }
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 450px) {
       .task-list {
         grid-template-columns: 1fr;
+      }
+
+      .profile-info {
+        gap: 18px;
+      }
+
+      .task-header {
+        display: block;
+      }
+
+      .task-header span {
+        display: block;
+        margin-top: 5px;
       }
     }
   </style>
@@ -131,40 +240,132 @@
 
   <div class="container">
 
-    <div class="header">
-      <h1>📚 Tugas Algoritma dan Pemrograman</h1>
-      <p>Kumpulan tugas pertemuan minggu 01 sampai minggu 12</p>
-    </div>
+    <!-- HEADER -->
+    <section class="hero">
+      <h1>Algoritma & Pemrograman</h1>
+      <p>Kumpulan tugas dan latihan pemrograman</p>
+    </section>
 
-    <div class="profile">
-      <p>👤 Nama: <strong>Farel Julius Khristian</strong></p>
-      <p>🆔 NIM: <strong>31250003</strong></p>
-    </div>
+    <!-- PROFILE -->
+    <section class="profile">
+      <div class="profile-title">Student Information</div>
 
-    <div class="tasks">
-      <h2>📂 Daftar Tugas</h2>
+      <div class="profile-info">
+        <div class="info-item">
+          <span>Nama</span>
+          <strong>Farel Julius Khristian</strong>
+        </div>
+
+        <div class="info-item">
+          <span>NIM</span>
+          <strong>31250003</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- DAFTAR TUGAS -->
+    <section class="task-container">
+
+      <div class="task-header">
+        <h2>Daftar Tugas</h2>
+        <span>12 Pertemuan</span>
+      </div>
 
       <ul class="task-list">
-        <li><a href="./minggu-01/">Minggu 01</a></li>
-        <li><a href="./minggu-02/">Minggu 02</a></li>
-        <li><a href="./minggu-03/">Minggu 03</a></li>
-        <li><a href="./minggu-04/">Minggu 04</a></li>
-        <li><a href="./minggu-05/">Minggu 05</a></li>
-        <li><a href="./minggu-06/">Minggu 06</a></li>
-        <li><a href="./minggu-07/">Minggu 07</a></li>
-        <li><a href="./minggu-08/">Minggu 08</a></li>
-        <li><a href="./minggu-09/">Minggu 09</a></li>
-        <li><a href="./minggu-10/">Minggu 10</a></li>
-        <li><a href="./minggu-11/">Minggu 11</a></li>
-        <li><a href="./minggu-12/">Minggu 12</a></li>
+
+        <li>
+          <a href="./minggu-01/">
+            <div class="number">01</div>
+            <span>Minggu 01</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="./minggu-02/">
+            <div class="number">02</div>
+            <span>Minggu 02</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="./minggu-03/">
+            <div class="number">03</div>
+            <span>Minggu 03</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="./minggu-04/">
+            <div class="number">04</div>
+            <span>Minggu 04</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="./minggu-05/">
+            <div class="number">05</div>
+            <span>Minggu 05</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="./minggu-06/">
+            <div class="number">06</div>
+            <span>Minggu 06</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="./minggu-07/">
+            <div class="number">07</div>
+            <span>Minggu 07</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="./minggu-08/">
+            <div class="number">08</div>
+            <span>Minggu 08</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="./minggu-09/">
+            <div class="number">09</div>
+            <span>Minggu 09</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="./minggu-10/">
+            <div class="number">10</div>
+            <span>Minggu 10</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="./minggu-11/">
+            <div class="number">11</div>
+            <span>Minggu 11</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="./minggu-12/">
+            <div class="number">12</div>
+            <span>Minggu 12</span>
+          </a>
+        </li>
+
       </ul>
-    </div>
+    </section>
 
     <footer>
-      © 2026 Farel Julius Khristian • Algoritma dan Pemrograman
+      © 2026 Farel Julius Khristian · Algoritma dan Pemrograman
     </footer>
 
   </div>
 
 </body>
 </html>
+```
