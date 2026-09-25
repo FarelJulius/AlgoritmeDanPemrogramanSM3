@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minggu 01 - Cek Ganjil/Genap</title>
+</head>
+<body>
+  <h1>Cek Bilangan Ganjil atau Genap</h1>
+
+  <p>Masukkan sebuah bilangan bulat, lalu klik tombol Cek.</p>
+
+  <label for="angka">Bilangan:</label>
+  <input type="number" id="angka" name="angka" />
+  <button id="btnCek">Cek</button>
+
+  <p id="hasil"></p>
+
+  <script>
+    (function() {
+      var input = document.getElementById('angka');
+      var btn = document.getElementById('btnCek');
+      var hasil = document.getElementById('hasil');
+
+      btn.addEventListener('click', function() {
+        var nilai = input.value;
+        if (nilai === '') {
+          hasil.textContent = 'Silakan masukkan bilangan terlebih dahulu.';
+          return;
+        }
+        var angka = Number(nilai);
+        if (!Number.isInteger(angka)) {
+          hasil.textContent = 'Masukkan bilangan bulat (integer).';
+          return;
+        }
+        if (angka % 2 === 0) {
+          hasil.textContent = angka + ' adalah bilangan GENAP.';
+        } else {
+          hasil.textContent = angka + ' adalah bilangan GANJIL.';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
