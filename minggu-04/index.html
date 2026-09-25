@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peringkat Kelas</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f3f8;
+      padding: 30px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px #ccc;
+    }
+
+    h1 {
+      text-align: center;
+      color: #4b3f8f;
+    }
+
+    h2 {
+      color: #4b3f8f;
+      margin-top: 30px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background: #5b4bb7;
+      color: white;
+    }
+
+    .hasil {
+      margin-top: 15px;
+      padding: 15px;
+      background: #f0efff;
+      border-radius: 8px;
+    }
+
+    button {
+      padding: 10px 15px;
+      background: #5b4bb7;
+      color: white;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #40358a;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>Website Peringkat Kelas</h1>
+
+    <p><b>Nama:</b> Farel Julius Khristian</p>
+    <p><b>NIM:</b> 31250003</p>
+
+    <h2>Data Nilai Siswa</h2>
+
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Nama</th>
+        <th>Nilai</th>
+      </tr>
+
+      <tr>
+        <td>1</td>
+        <td>Farel</td>
+        <td>90</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>Sinta</td>
+        <td>95</td>
+      </tr>
+
+      <tr>
+        <td>3</td>
+        <td>Andi</td>
+        <td>85</td>
+      </tr>
+
+      <tr>
+        <td>4</td>
+        <td>Budi</td>
+        <td>88</td>
+      </tr>
+
+      <tr>
+        <td>5</td>
+        <td>Rina</td>
+        <td>92</td>
+      </tr>
+    </table>
+
+
+    <h2>Linear Search</h2>
+
+    <p>
+      Mencari 3 nilai terbesar menggunakan algoritma Linear Search.
+    </p>
+
+    <button onclick="cariTerbesar()">
+      Cari 3 Nilai Terbesar
+    </button>
+
+    <div class="hasil" id="hasil">
+      Hasil akan muncul di sini.
+    </div>
+
+
+    <h2>Peringkat Kelas</h2>
+
+    <table id="tabelPeringkat">
+      <tr>
+        <th>Peringkat</th>
+        <th>Nama</th>
+        <th>Nilai</th>
+      </tr>
+    </table>
+
+  </div>
+
+
+  <script>
+
+    // Data siswa
+    let siswa = [
+      { nama: "Farel", nilai: 90 },
+      { nama: "Sinta", nilai: 95 },
+      { nama: "Andi", nilai: 85 },
+      { nama: "Budi", nilai: 88 },
+      { nama: "Rina", nilai: 92 }
+    ];
+
+
+    // Linear Search
+    function cariTerbesar() {
+
+      let data = [...siswa];
+      let hasil = [];
+
+      for (let j = 0; j < 3; j++) {
+
+        let terbesar = data[0];
+        let posisi = 0;
+
+        for (let i = 1; i < data.length; i++) {
+
+          if (data[i].nilai > terbesar.nilai) {
+            terbesar = data[i];
+            posisi = i;
+          }
+
+        }
+
+        hasil.push(terbesar);
+        data.splice(posisi, 1);
+      }
+
+      document.getElementById("hasil").innerHTML =
+        "<b>3 Nilai Terbesar:</b><br>" +
+        "1. " + hasil[0].nama + " - " + hasil[0].nilai + "<br>" +
+        "2. " + hasil[1].nama + " - " + hasil[1].nilai + "<br>" +
+        "3. " + hasil[2].nama + " - " + hasil[2].nilai;
+    }
+
+
+    // Membuat peringkat
+    siswa.sort(function(a, b) {
+      return b.nilai - a.nilai;
+    });
+
+
+    let tabel = document.getElementById("tabelPeringkat");
+
+    for (let i = 0; i < siswa.length; i++) {
+
+      tabel.innerHTML +=
+        "<tr>" +
+        "<td>" + (i + 1) + "</td>" +
+        "<td>" + siswa[i].nama + "</td>" +
+        "<td>" + siswa[i].nilai + "</td>" +
+        "</tr>";
+
+    }
+
+  </script>
+
+</body>
+</html>
